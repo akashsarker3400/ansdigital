@@ -11,12 +11,14 @@ import Partners from './components/Partners';
 import SubCompanies from './components/SubCompanies';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ApiDocs from './components/ApiDocs';
 
 // New Page Components
 import AboutPage from './components/AboutPage';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
 import CookiePolicy from './components/CookiePolicy';
+import Logo from './assets/ans_digital_logo_white.png';
 
 const App: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -53,39 +55,45 @@ const App: React.FC = () => {
       />
 
       <AnimatePresence>
-        {isLoading ? (
-          <motion.div
-            key="loader"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-black"
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="text-4xl font-bold font-space tracking-tighter flex items-center gap-2"
-            >
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-2xl">A</span>
-              </div>
-              <span className="text-gradient">ANS DIGITAL</span>
-            </motion.div>
-            <motion.div 
-              className="mt-8 h-[2px] w-48 bg-gray-800 overflow-hidden rounded-full"
-            >
-              <motion.div 
-                className="h-full bg-cyan-500"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
-              />
-            </motion.div>
-            <p className="mt-4 text-gray-500 text-sm tracking-widest uppercase">Initializing Core Systems</p>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+  {isLoading ? (
+    <motion.div
+      key="loader"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-black"
+    >
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col items-center gap-4"
+      >
+        {/* এখানে আপনার Logo বসানো হয়েছে */}
+        <img 
+          src={Logo} 
+          alt="ANS Digital Logo" 
+          className="h-16 md:h-20 w-auto object-contain" 
+        />
+      </motion.div>
+
+      {/* Progress Bar */}
+      <motion.div 
+        className="mt-8 h-[2px] w-48 bg-gray-800 overflow-hidden rounded-full"
+      >
+        <motion.div 
+          className="h-full bg-cyan-500"
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        />
+      </motion.div>
+      <p className="mt-4 text-gray-500 text-sm tracking-widest uppercase font-space">
+        Initializing Core Systems
+      </p>
+    </motion.div>
+  ) : null}
+</AnimatePresence>
 
       <Navbar navigate={navigate} />
       
@@ -150,6 +158,16 @@ const App: React.FC = () => {
               exit={{ opacity: 0, y: -20 }}
             >
               <CookiePolicy />
+            </motion.div>
+          )}
+          {currentPage === 'api-docs' && (
+            <motion.div
+              key="api-docs"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <ApiDocs />
             </motion.div>
           )}
         </AnimatePresence>

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PARTNERS } from '../constants';
 
+
 const Partners: React.FC = () => {
   const [hoveredPartner, setHoveredPartner] = useState<string | null>(null);
 
@@ -14,7 +15,7 @@ const Partners: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 mb-12">
         <div className="text-center">
           <h3 className="text-sm font-bold text-gray-500 uppercase tracking-[0.4em] mb-4">Trusted Integrations</h3>
-          <p className="text-gray-400">Direct connections to the world's most powerful platforms.</p>
+          <p className="text-gray-400">Connections to the world's most powerful platforms.</p>
         </div>
       </div>
 

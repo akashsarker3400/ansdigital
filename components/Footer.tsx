@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Twitter, Instagram, Linkedin, ChevronRight } from 'lucide-react';
+import Logo from '../assets/ans_digital_logo_white.png';
 
 interface FooterProps {
   navigate: (page: string) => void;
@@ -16,14 +17,13 @@ const Footer: React.FC<FooterProps> = ({ navigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-20">
           
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-3 mb-8 cursor-pointer" onClick={() => navigate('home')}>
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
-              </div>
-              <span className="text-2xl font-bold font-space tracking-tighter text-white">
-                ANS DIGITAL
-              </span>
-            </div>
+            <div className="flex items-center mb-8 cursor-pointer" onClick={() => navigate('home')}>
+    <img 
+      src={Logo} 
+      alt="ANS Digital" 
+      className="h-12 w-auto object-contain hover:scale-105 transition-transform duration-300" 
+    />
+  </div>
             <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-sm">
               Global media-technology company specializing in professional video, audio, and content-based digital solutions. Building the infrastructure for tomorrow's digital economy.
             </p>
@@ -46,7 +46,7 @@ const Footer: React.FC<FooterProps> = ({ navigate }) => {
               <li><button onClick={() => navigate('home')} className="text-gray-500 hover:text-cyan-400 text-sm transition-colors">White-Label SaaS</button></li>
               <li><button onClick={() => navigate('home')} className="text-gray-500 hover:text-cyan-400 text-sm transition-colors">Music Distribution</button></li>
               <li><button onClick={() => navigate('home')} className="text-gray-500 hover:text-cyan-400 text-sm transition-colors">Copyright ID</button></li>
-              <li><button onClick={() => navigate('home')} className="text-gray-500 hover:text-cyan-400 text-sm transition-colors">Analytics API</button></li>
+              <li><button onClick={() => navigate('api-docs')} className="text-gray-500 hover:text-cyan-400 text-sm transition-colors">ANS Music API Docs</button></li>
             </ul>
           </div>
 
